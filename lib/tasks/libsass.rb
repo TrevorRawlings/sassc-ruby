@@ -13,7 +13,9 @@ namespace :libsass do
   end
 
   file "Makefile" do
-    sh "git submodule update --init"
+    Dir.chdir(File.expand_path(File.dirname(__FILE__)) + '/../../') do
+      sh "git submodule update --init"
+    end
   end
 
   file "lib/libsass.so" => "Makefile" do
